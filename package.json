@@ -1,0 +1,16 @@
+{
+  "name": "restaurant-menu-loader",
+  "version": "1.0.0",
+  "private": true,
+  "description": "A table QR menu and database-backed ordering demo",
+  "scripts": {
+    "start": "node server.js",
+    "test": "node --test"
+  },
+  "engines": {
+    "node": ">=22.13.0"
+  },
+  "dependencies": {
+    "qrcode": "^1.5.4"
+  }
+}

@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#172b24">
+    <title>Staff menu availability — Table & Thyme</title>
+    <link rel="stylesheet" href="/public/shared/styles.css">
+  </head>
+  <body>
+    <header class="topbar">
+      <a class="brand" href="/staff">
+        <span class="brand-mark">T<span>&</span>T</span>
+        <span>TABLE <b>& THYME</b></span>
+      </a>
+      <nav><a class="active" href="/staff">Staff menu availability</a></nav>
+    </header>
+    <main class="admin-main">
+      <section class="admin-hero">
+        <p class="eyebrow">RESTAURANT OWNER TOOLS</p>
+        <h1>Menu <em>availability.</em></h1>
+        <p>Keep the customer menu in sync with your kitchen. Mark dishes available or unavailable as stock changes.</p>
+      </section>
+      <section class="admin-section">
+        <div class="section-heading">
+          <div><p class="eyebrow">KITCHEN CONTROL</p><h2>Manage <em>dishes.</em></h2></div>
+          <button id="refresh-owner-menu" class="button button-outline" type="button">Refresh menu</button>
+        </div>
+        <p class="admin-hint">Changing availability for a dish already ordered updates its history and starts a fresh four-minute customer modification/cancellation window.</p>
+        <div class="owner-menu-tools">
+          <label class="search-box"><span aria-hidden="true">⌕</span><input id="owner-menu-search" type="search" placeholder="Search menu items..." autocomplete="off"></label>
+          <select id="owner-category-filter" aria-label="Filter menu by category">
+            <option value="all">All sections</option>
+            <option>Starter</option><option>Main Course</option><option>Dessert</option><option>Supplementary</option>
+          </select>
+          <select id="owner-availability-filter" aria-label="Filter by availability">
+            <option value="all">All availability</option>
+            <option value="available">Available</option>
+            <option value="unavailable">Unavailable</option>
+          </select>
+        </div>
+        <p id="owner-menu-error" class="form-error" role="alert"></p>
+        <div id="owner-menu-list" class="admin-menu" aria-live="polite"></div>
+      </section>
+    </main>
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+    <footer><span>TABLE & THYME</span><span>OWNER MENU CONTROLS</span></footer>
+    <script src="/public/staff/app.js"></script>
+  </body>
+</html>

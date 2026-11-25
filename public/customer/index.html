@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#172b24">
+    <title>Table & Thyme — Restaurant menu</title>
+    <link rel="stylesheet" href="/public/shared/styles.css">
+  </head>
+  <body>
+    <header class="topbar">
+      <a class="brand" href="/">
+        <span class="brand-mark">T<span>&</span>T</span>
+        <span>TABLE <b>& THYME</b></span>
+      </a>
+      <nav>
+        <a href="/">Menu</a>
+        <a href="/qr">Restaurant QR</a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div class="hero-copy">
+          <p class="eyebrow">GOOD FOOD, RIGHT THIS WAY</p>
+          <h1>A little something<br>for <em>every craving.</em></h1>
+          <p class="hero-intro">Explore our kitchen's favourites, made fresh and served at your table.</p>
+          <a class="button button-light" href="#menu">Explore the menu <span aria-hidden="true">↓</span></a>
+        </div>
+        <div class="hero-art" aria-hidden="true">
+          <div class="plate"><div class="plate-food"><span>✦</span><span>✺</span><span>✿</span><span>✦</span></div></div>
+          <span class="art-caption">FRESH FROM OUR KITCHEN</span>
+        </div>
+        <div class="hero-stamp" aria-hidden="true">GOOD<br>FOOD<br>GOOD<br>MOOD</div>
+      </section>
+
+      <section class="order-strip">
+        <div><span class="strip-icon">⌖</span><label for="table-number">YOUR TABLE</label></div>
+        <select id="table-number" aria-label="Select your table" required></select>
+        <p>Scan the restaurant QR code below, then select your table and add a contact number when placing your order.</p>
+        <button id="open-customer-orders" class="customer-orders-link" type="button">View your orders <span aria-hidden="true">↗</span></button>
+      </section>
+
+      <section class="menu-section" id="menu">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">MADE WITH CARE</p>
+            <h2>Find your <em>favourite.</em></h2>
+          </div>
+          <div class="diet-legend"><span class="veg-dot"></span> Vegetarian <span class="nonveg-dot"></span> Non-vegetarian</div>
+        </div>
+
+        <div class="menu-tools">
+          <label class="search-box">
+            <span aria-hidden="true">⌕</span>
+            <input id="search" type="search" placeholder="Search a dish..." autocomplete="off">
+            <kbd>⌘ K</kbd>
+          </label>
+          <div class="filter-group" id="diet-filters" aria-label="Filter by food preference">
+            <button class="filter-chip active" data-diet="all">Everything</button>
+            <button class="filter-chip" data-diet="veg"><span class="veg-dot"></span> Veg</button>
+            <button class="filter-chip" data-diet="non-veg"><span class="nonveg-dot"></span> Non-veg</button>
+          </div>
+          <select id="cuisine-filter" aria-label="Filter by cuisine">
+            <option value="all">All cuisines</option>
+            <option>Chinese</option><option>Italian</option><option>North Indian</option><option>South Indian</option>
+          </select>
+          <label class="available-toggle"><input id="available-only" type="checkbox"> Available only</label>
+        </div>
+        <div id="menu-content" aria-live="polite"></div>
+      </section>
+
+    </main>
+
+    <aside class="cart-bar" id="cart-bar" hidden>
+      <div><strong><span id="cart-count">0</span> items</strong><span id="cart-total">Rs 0</span></div>
+      <button id="open-cart" class="button button-green">Review order <span aria-hidden="true">→</span></button>
+    </aside>
+
+    <dialog id="cart-dialog" class="cart-dialog">
+      <form method="dialog" class="dialog-close-row"><button class="icon-button" aria-label="Close">×</button></form>
+      <p class="eyebrow">ALMOST THERE</p>
+      <h2>Your <em>order.</em></h2>
+      <div id="cart-lines" class="cart-lines"></div>
+      <label class="phone-field">Phone number for your order
+        <input id="phone-number" type="tel" placeholder="+91 98765 43210" autocomplete="tel" required>
+        <small>Each person can use their own number. Anyone who places an order at this table can use that number to access the shared table session. Payment is handled separately.</small>
+      </label>
+      <p class="fine-print">Your order is linked to Table <span id="cart-table-label"></span>. Each item can be modified or cancelled for 4 minutes after it is added or modified.</p>
+      <div id="cart-error" class="form-error" role="alert"></div>
+      <button id="submit-order" class="button button-green button-full">Place order <span aria-hidden="true">→</span></button>
+    </dialog>
+
+    <dialog id="customer-orders-dialog" class="cart-dialog customer-orders-dialog">
+      <form method="dialog" class="dialog-close-row"><button class="icon-button" aria-label="Close">×</button></form>
+      <p class="eyebrow">YOUR TABLE SESSION</p>
+      <h2>Your <em>orders.</em></h2>
+      <p class="fine-print">Orders stay active for 6 hours after submission, then disappear from this view and the active subtotal becomes zero. Each item can be cancelled for 4 minutes after it is added or modified. Payment is handled separately by the restaurant.</p>
+      <div class="order-lookup">
+        <label class="phone-field">Table number<select id="customer-orders-table" required></select></label>
+        <label class="phone-field">Contact number<input id="customer-orders-phone" type="tel" placeholder="+91 98765 43210" autocomplete="tel" required></label>
+        <button id="load-customer-orders" class="button button-outline" type="button">Find my orders</button>
+      </div>
+      <div id="customer-orders-error" class="form-error" role="alert"></div>
+      <div id="customer-orders-list" class="customer-orders-list" aria-live="polite"></div>
+      <button id="add-more-food" class="button button-green button-full" type="button" disabled>Add more food</button>
+    </dialog>
+
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+    <footer><span>TABLE & THYME</span><span>GOOD FOOD, MADE TO BE SHARED.</span></footer>
+    <script src="/public/customer/app.js"></script>
+  </body>
+</html>

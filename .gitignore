@@ -1,0 +1,4 @@
+node_modules/
+restaurant_details.db
+restaurant_details.db-shm
+restaurant_details.db-wal

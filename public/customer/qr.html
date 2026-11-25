@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#172b24">
+    <title>Restaurant QR code — Table & Thyme</title>
+    <link rel="stylesheet" href="/public/shared/styles.css">
+  </head>
+  <body>
+    <header class="topbar">
+      <a class="brand" href="/">
+        <span class="brand-mark">T<span>&</span>T</span>
+        <span>TABLE <b>& THYME</b></span>
+      </a>
+      <nav><a href="/menu">Menu</a><a class="active" href="/qr">Restaurant QR</a></nav>
+    </header>
+    <main class="qr-page">
+      <section class="qr-panel">
+        <p class="eyebrow">ONE CODE FOR EVERY TABLE</p>
+        <h1>Put the menu<br>in their <em>hands.</em></h1>
+        <p class="qr-intro">Print this shared QR code or place it on each table. Customers scan it with their phone camera to open the menu, choose their table number, and enter a contact number with their order.</p>
+        <div class="qr-print-card" aria-live="polite">
+          <img id="restaurant-qr-image" class="restaurant-qr-image" alt="QR code to open the restaurant menu on a phone">
+          <div class="qr-destination">
+            <span class="eyebrow">CUSTOMER MENU LINK</span>
+            <a id="restaurant-menu-link" href="/menu">Preparing menu link...</a>
+            <span class="qr-link-note">This address must be reachable from the customer's phone.</span>
+          </div>
+        </div>
+        <div class="qr-actions">
+          <a id="download-qr" class="button button-green" download="table-and-thyme-menu-qr.png">Download QR image</a>
+          <button id="print-qr" class="button button-outline" type="button">Print QR</button>
+          <a id="open-customer-menu" class="button button-light" href="/menu" target="_blank" rel="noopener">Open customer menu ↗</a>
+        </div>
+        <p id="qr-error" class="form-error" role="alert"></p>
+        <p class="qr-instructions">For local use, connect the restaurant computer and customer phone to the same Wi-Fi. For an online restaurant, set <code>PUBLIC_BASE_URL</code> to the public HTTPS address before generating the QR.</p>
+      </section>
+    </main>
+    <footer><span>TABLE & THYME</span><span>GOOD FOOD, MADE TO BE SHARED.</span></footer>
+    <script src="/public/customer/qr.js"></script>
+  </body>
+</html>
